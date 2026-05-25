@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Expense Tracker</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Expense Tracker </h1>
+
+        <h2>Balance: ₦{{ balance }}</h2>
+
+        <a href="/add">
+            <button>Add Transaction</button>
+        </a>
+
+        <ul>
+
+            {% for transaction in transactions %}
+
+               <li>
+                    {{ transaction.title }} - ₦{{ transaction.amount }} ({{ transaction.type }} - {{ transaction.category }})
+
+                    <a href="/delete/{{ transaction.id }}">
+                        <button>Delete</button>
+                    </a>
+
+               </li>
+
+            {% endfor %}
+
+        </ul>
+
+    </div>
+
+</body>
+
+</html>
